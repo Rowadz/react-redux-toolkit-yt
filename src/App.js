@@ -1,5 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import 'rsuite/dist/styles/rsuite-dark.css'
+import { useDispatch } from 'react-redux'
+import { add } from './features/todos/todosSlice'
 import {
   Button,
   Container,
@@ -18,6 +20,8 @@ import {
 import './App.css'
 
 function App() {
+  const [todoTxt, setTodoTxt] = useState('')
+  const dispatch = useDispatch()
   return (
     <div className="main">
       <Container>
@@ -35,11 +39,23 @@ function App() {
                 <Form fluid>
                   <FormGroup>
                     <ControlLabel>What you want to do?</ControlLabel>
-                    <FormControl name="task" />
+                    <FormControl
+                      name="task"
+                      value={todoTxt}
+                      onChange={setTodoTxt}
+                    />
                   </FormGroup>
                   <FormGroup>
                     <ButtonToolbar>
-                      <Button appearance="primary">Create</Button>
+                      <Button
+                        appearance="primary"
+                        onClick={() => {
+                          dispatch(add(todoTxt))
+                          setTodoTxt('')
+                        }}
+                      >
+                        Create
+                      </Button>
                     </ButtonToolbar>
                   </FormGroup>
                 </Form>
