@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import 'rsuite/dist/styles/rsuite-dark.css'
 import { useDispatch } from 'react-redux'
+import Todos from './features/todos/Todos'
 import { add } from './features/todos/todosSlice'
 import {
   Button,
@@ -50,7 +51,9 @@ function App() {
                       <Button
                         appearance="primary"
                         onClick={() => {
-                          dispatch(add(todoTxt))
+                          dispatch(
+                            add({ txt: todoTxt, id: Date.now().toString() })
+                          )
                           setTodoTxt('')
                         }}
                       >
@@ -61,6 +64,7 @@ function App() {
                 </Form>
               </Panel>
               <Divider />
+              <Todos />
             </FlexboxGrid.Item>
           </FlexboxGrid>
         </Content>
