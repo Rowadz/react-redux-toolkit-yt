@@ -2,7 +2,11 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const todoSlice = createSlice({
   name: 'todos',
-  initialState: [],
+  initialState: [
+    { id: 1, txt: 'rowadz' },
+    { id: 2, txt: 'rowadz02' },
+    { id: 3, txt: 'rowadz03' },
+  ],
   reducers: {
     add(state, { payload }) {
       state.push(payload)
