@@ -3,6 +3,7 @@ import 'rsuite/dist/styles/rsuite-dark.css'
 import { useDispatch } from 'react-redux'
 import Todos from './features/todos/Todos'
 import Posts from './features/posts/Posts'
+import Users from './features/users/Users'
 import { add } from './features/todos/todosSlice'
 import {
   Button,
@@ -67,6 +68,7 @@ function App() {
               <Divider />
               <Todos />
               <Posts />
+              <Users />
             </FlexboxGrid.Item>
           </FlexboxGrid>
         </Content>
