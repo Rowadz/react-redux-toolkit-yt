@@ -11,13 +11,19 @@ const todoSlice = createSlice({
     add(state, { payload }) {
       state.push(payload)
     },
-    del(state, { payload }) {
-      return state.filter(({ id }) => id !== payload)
+    del(state, { payload: index }) {
+      state.splice(index, 1)
+    },
+    patch(state, { payload: { index, txt } }) {
+      state[index].txt = txt
+    },
+    delProp(state, { payload: { index, prop } }) {
+      delete state[index][prop]
     },
   },
 })
 
-export const { add, del } = todoSlice.actions
+export const { add, del, patch, delProp } = todoSlice.actions
 
 export const selectTodos = ({ todos }) => todos
 
