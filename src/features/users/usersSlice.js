@@ -10,11 +10,7 @@ export const fetchData = createAsyncThunk(
     const data = await fetch('http://localhost:3001/users').then((res) =>
       res.json()
     )
-    const users = data.map(({ articles, comments, ...user }) => ({
-      ...user,
-      articles: articles.map(({ id }) => id),
-      comments: comments.map(({ id }) => id),
-    }))
+    const users = data.map(({ articles, comments, ...user }) => ({ ...user }))
     dispatch(setUsers(users))
 
     const articles = data
